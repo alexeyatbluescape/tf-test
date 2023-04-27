@@ -28,7 +28,7 @@ resource "null_resource" "aws_cli_version" {
 
 resource "null_resource" "aws_cli_version2" {
   provisioner "local-exec" {
-    command = "aws2 --version"
+    command = "awsv2 --version"
   }
   triggers = {
     run = "${timestamp()}"
