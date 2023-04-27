@@ -35,15 +35,6 @@ resource "null_resource" "kubectl_version" {
   }
 }
 
-resource "null_resource" "helm_version" {
-  provisioner "local-exec" {
-    command = "helm version --client"
-  }
-  triggers = {
-    run = "${timestamp()}"
-  }
-}
-
 resource "null_resource" "python_version" {
   provisioner "local-exec" {
     command = "python3 --version"
