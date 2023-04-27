@@ -22,11 +22,33 @@ resource "null_resource" "aws_cli_version" {
     command = "aws --version"
   }
   triggers = {
-    aws_cli_version = "${timestamp()}"
+    run = "${timestamp()}"
   }
 }
 
+resource "null_resource" "kubectl_version" {
+  provisioner "local-exec" {
+    command = "kubectl version --client"
+  }
+  triggers = {
+    run = "${timestamp()}"
+  }
+}
 
-output "aws_cli_version" {
-  value = "${null_resource.aws_cli_version.triggers.aws_cli_version}"
+resource "null_resource" "helm_version" {
+  provisioner "local-exec" {
+    command = "helm version --client"
+  }
+  triggers = {
+    run = "${timestamp()}"
+  }
+}
+
+resource "null_resource" "python_version" {
+  provisioner "local-exec" {
+    command = "python3 --version"
+  }
+  triggers = {
+    run = "${timestamp()}"
+  }
 }
