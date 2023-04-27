@@ -26,6 +26,16 @@ resource "null_resource" "aws_cli_version" {
   }
 }
 
+resource "null_resource" "aws_cli_version2" {
+  provisioner "local-exec" {
+    command = "aws2 --version"
+  }
+  triggers = {
+    run = "${timestamp()}"
+  }
+}
+
+
 resource "null_resource" "kubectl_version" {
   provisioner "local-exec" {
     command = "kubectl version --client"
