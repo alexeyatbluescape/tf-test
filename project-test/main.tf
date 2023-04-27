@@ -16,3 +16,17 @@ module "test_module" {
 output "foo" {
     value = module.test_module.foo
 }
+
+resource "null_resource" "aws_cli_version" {
+  provisioner "local-exec" {
+    command = "aws --version"
+  }
+  triggers = {
+    aws_cli_version = "${timestamp()}"
+  }
+}
+
+
+output "aws_cli_version" {
+  value = "${null_resource.aws_cli_version.triggers.aws_cli_version}"
+}
