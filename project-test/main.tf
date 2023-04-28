@@ -19,7 +19,7 @@ output "foo" {
 
 resource "null_resource" "aws_cli_version" {
   provisioner "local-exec" {
-    command = "aws --version"
+    command = "which aws"
   }
   triggers = {
     run = "${timestamp()}"
@@ -28,7 +28,7 @@ resource "null_resource" "aws_cli_version" {
 
 resource "null_resource" "aws_cli_version2" {
   provisioner "local-exec" {
-    command = "awsv2 --version"
+    command = "which awsv2"
   }
   triggers = {
     run = "${timestamp()}"
