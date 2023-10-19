@@ -1,0 +1,6 @@
+env0_org_id = # your env0 org id
+repository = # your repository name
+github_installation_id = # your github installation id
+
+enable_plans = true # apply with true, then change to false and apply 2 times.
+# you will always going to see `- auto_deploy_by_custom_glob       = "test/**" -> null`
